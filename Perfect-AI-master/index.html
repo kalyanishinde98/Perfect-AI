@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect AI| Free AI Tools Aggregator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body>
+    <div id="login" class="page active">
+        <section class="auth-page">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <i class="fas fa-robot"></i>
+                        Perfect AI
+                    </div>
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your account to continue</p>
+                </div>
+                
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required>
+                        <div class="error-message" id="login-email-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                        <div class="error-message" id="login-password-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Sign In</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Don't have an account? <button class="auth-link" data-page="signup">Sign up here</button></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="signup" class="page">
+        <section class="auth-page">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <div class="auth-logo">
+                        <i class="fas fa-robot"></i>
+                        Perfect AI
+                    </div>
+                    <h1>Create Account</h1>
+                    <p>Sign up to start using AI tools for free</p>
+                </div>
+                
+                <form class="auth-form" id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" class="form-input" placeholder="Enter your full name" required>
+                        <div class="error-message" id="signup-name-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" class="form-input" placeholder="Enter your email" required>
+                        <div class="error-message" id="signup-email-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" class="form-input" placeholder="Create a password" required>
+                        <div class="error-message" id="signup-password-error"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirm Password</label>
+                        <input type="password" id="signup-confirm" class="form-input" placeholder="Confirm your password" required>
+                        <div class="error-message" id="signup-confirm-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </form>
+                
+                <div class="auth-footer">
+                    <p>Already have an account? <button class="auth-link" data-page="login">Sign in here</button></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <nav class="navbar" style="display: none;" id="main-navbar">
+        <div class="nav-container">
+            <div class="nav-logo" data-page="home">
+                <i class="fas fa-robot"></i>
+                Perfect AI
+            </div>
+            
+            <ul class="nav-menu">
+                <li><button class="nav-link active" data-page="home">Home</button></li>
+                <li><button class="nav-link" data-page="tools">AI Tools</button></li>
+                <li><button class="nav-link" data-page="features">How It Works</button></li>
+                <li><button class="nav-link" data-page="pricing">Pricing</button></li>
+            </ul>
+            
+            <div class="nav-buttons" id="auth-buttons" style="display: none;">
+                <button class="btn-login" data-page="login">Sign In</button>
+                <button class="btn-primary" data-page="signup">Get Started</button>
+            </div>
+
+            <div class="user-menu" id="user-menu" style="display: none;">
+                <div class="user-avatar" id="user-avatar" style="cursor: pointer;">U</div>
+                
+                <div id="user-dropdown">
+                    <button data-page="profile">
+                        <i class="fas fa-user" style="margin-right: 10px;"></i> My Profile
+                    </button>
+                    <button id="logout-btn">
+                        <i class="fas fa-sign-out-alt" style="margin-right: 10px;"></i> Sign Out
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div id="home" class="page">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>One Prompt, <span class="gradient-text">Multiple AI Tools</span></h1>
+                    <p>Enter your prompt once and get results from the best AI tools selected by our intelligent matching system.</p>
+                    
+                    <div class="prompt-section">
+                        <div class="prompt-input-container">
+                            <input type="text" class="prompt-input" placeholder="Describe what you want to create or ask...">
+                            <button class="btn-primary" id="generate-btn">Generate</button>
+                        </div>
+                        <div class="prompt-examples">
+                            <div class="example-chip">Write a blog post about sustainable energy</div>
+                            <div class="example-chip">Create a marketing slogan for a coffee shop</div>
+                            <div class="example-chip">Generate Python code for a sorting algorithm</div>
+                            <div class="example-chip">Design a logo for a tech startup</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI-Generated Results</h2>
+                    <p>Our ML system selects the best tools for your specific prompt</p>
+                </div>
+                
+                <div class="loader" id="loader">
+                    <div class="loader-spinner"></div>
+                    <p>Analyzing your prompt and selecting the best AI tools...</p>
+                </div>
+                
+                <div class="results-container" id="results-container">
+                    <div class="results-header">
+                        <h3>Results for: <span id="prompt-display"></span></h3>
+                        <div class="selected-tools">
+                            <div class="tool-badge">ChatGPT</div>
+                            <div class="tool-badge">DALL-E</div>
+                            <div class="tool-badge">Google AI Studio</div>
+                        </div>
+                    </div>
+                    <div class="results-content" id="results-content">
+                        </div>
+                </div>
+                
+                <div class="empty-state" id="empty-state">
+                    <i class="fas fa-comment-alt"></i>
+                    <h3>No results yet</h3>
+                    <p>Enter a prompt above to see AI-generated results from multiple tools</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Supercharge Your Creativity?</h2>
+                <p>Access Google AI Studio, ChatGPT 4, and DALL-E completely free in one place.</p>
+                <div class="cta-buttons">
+                    <button class="btn-secondary" data-page="tools">Explore AI Tools</button>
+                    <!--<button class="btn-secondary">View Pricing</button>-->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="tools" class="page">
+        <section class="tools-section">
+            <div class="container">
+                <button class="back-button" data-page="home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+                
+                <div class="section-header">
+                    <h2>Our Free AI Tools</h2>
+                    <p>Access the best AI tools completely free in one place</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-card" data-page="chatgpt">
+                        <div class="tool-card-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <h3>ChatGPT 4</h3>
+                        <p>Advanced conversational AI for text generation and analysis</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Text</span>
+                            <span class="tool-tag">Conversation</span>
+                            <span class="tool-tag">Code</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card" data-page="dalle">
+                        <div class="tool-card-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3>DALL-E</h3>
+                        <p>Create realistic images and art from text descriptions</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Images</span>
+                            <span class="tool-tag">Art</span>
+                            <span class="tool-tag">Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-card" data-page="google-ai">
+                        <div class="tool-card-icon">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h3>Google AI Studio</h3>
+                        <p>Google's powerful AI platform for various creative tasks</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">Multi-purpose</span>
+                            <span class="tool-tag">Creative</span>
+                            <span class="tool-tag">Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="chatgpt" class="page">
+        <section class="tool-page">
+            <div class="container">
+                <button class="back-button" data-page="tools">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tools
+                </button>
+                
+                <div class="tool-header">
+                    <div class="tool-header-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <h1>ChatGPT 4</h1>
+                    <p>Advanced conversational AI for text generation and analysis</p>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="tool-interface">
+                        <h2>Chat with GPT-4</h2>
+                        <p>Ask anything and get intelligent responses from OpenAI's most advanced model.</p>
+                        
+                        <div class="prompt-section">
+                            <div class="prompt-input-container">
+                                <input type="text" class="prompt-input" placeholder="Ask me anything...">
+                                <button class="btn-primary" id="chatgpt-send">Send</button>
+                            </div>
+                        </div>
+                        
+                        <div class="results-content" id="chatgpt-results">
+                            <div class="result-card">
+                                <div class="result-header">
+                                    <div class="tool-info">
+                                        <div class="tool-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div>
+                                            <div class="tool-name">ChatGPT 4</div>
+                                            <div class="tool-category">AI Assistant</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Hello! I'm ChatGPT 4, an advanced AI language model. How can I help you today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-info-sidebar">
+                        <h3>About ChatGPT 4</h3>
+                        <p>ChatGPT 4 is OpenAI's most advanced system, producing safer and more useful responses. It can solve difficult problems with greater accuracy, thanks to its broader general knowledge and problem solving abilities.</p>
+                        
+                        <h4>Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Advanced natural language understanding</li>
+                            <li><i class="fas fa-check"></i> Creative content generation</li>
+                            <li><i class="fas fa-check"></i> Code writing and debugging</li>
+                            <li><i class="fas fa-check"></i> Complex problem solving</li>
+                            <li><i class="fas fa-check"></i> Contextual conversation</li>
+                            <li><i class="fas fa-check"></i> Multi-format output</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="dalle" class="page">
+        <section class="tool-page">
+            <div class="container">
+                <button class="back-button" data-page="tools">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tools
+                </button>
+                
+                <div class="tool-header">
+                    <div class="tool-header-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h1>DALL-E</h1>
+                    <p>Create realistic images and art from text descriptions</p>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="tool-interface">
+                        <h2>Generate Images with DALL-E</h2>
+                        <p>Describe what you want to see and DALL-E will create it for you.</p>
+                        
+                        <div class="prompt-section">
+                            <div class="prompt-input-container">
+                                <input type="text" class="prompt-input" placeholder="Describe the image you want to create...">
+                                <button class="btn-primary" id="dalle-generate">Generate</button>
+                            </div>
+                        </div>
+                        
+                        <div class="results-content" id="dalle-results">
+                            <div class="result-card">
+                                <div class="result-header">
+                                    <div class="tool-info">
+                                        <div class="tool-icon">
+                                            <i class="fas fa-robot"></i>
+                                        </div>
+                                        <div>
+                                            <div class="tool-name">DALL-E</div>
+                                            <div class="tool-category">Image Generator</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Enter a description above to generate unique images with DALL-E.</p>
+                                <div class="result-output" style="text-align: center; padding: 2rem;">
+                                    <i class="fas fa-image" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 1rem;"></i>
+                                    <p>Your generated image will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-info-sidebar">
+                        <h3>About DALL-E</h3>
+                        <p>DALL-E is an AI system that can create realistic images and art from a description in natural language. It can create original, realistic images and art from a text description, combining concepts, attributes, and styles.</p>
+                        
+                        <h4>Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Text-to-image generation</li>
+                            <li><i class="fas fa-check"></i> Multiple art styles</li>
+                            <li><i class="fas fa-check"></i> Realistic and artistic outputs</li>
+                            <li><i class="fas fa-check"></i> Concept combination</li>
+                            <li><i class="fas fa-check"></i> High-resolution outputs</li>
+                            <li><i class="fas fa-check"></i> Creative variations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="google-ai" class="page">
+        <section class="tool-page">
+            <div class="container">
+                <button class="back-button" data-page="tools">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Tools
+                </button>
+                
+                <div class="tool-header">
+                    <div class="tool-header-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h1>Google AI Studio</h1>
+                    <p>Google's powerful AI platform for various creative tasks</p>
+                </div>
+                
+                <div class="tool-content">
+                    <div class="tool-interface">
+                        <h2>Google AI Studio</h2>
+                        <p>Access Google's advanced AI models for text, code, and more.</p>
+                        
+                        <div class="prompt-section">
+                            <div class="prompt-input-container">
+                                <input type="text" class="prompt-input" placeholder="Enter your prompt for Google AI...">
+                                <button class="btn-primary" id="google-ai-send">Generate</button>
+                            </div>
+                        </div>
+                        
+                        <div class="results-content" id="google-ai-results">
+                            <div class="result-card">
+                                <div class="result-header">
+                                    <div class="tool-info">
+                                        <div class="tool-icon">
+                                            <i class="fab fa-google"></i>
+                                        </div>
+                                        <div>
+                                            <div class="tool-name">Google AI Studio</div>
+                                            <div class="tool-category">Multi-purpose AI</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>Google AI Studio provides access to various Google AI models. Enter a prompt above to get started.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-info-sidebar">
+                        <h3>About Google AI Studio</h3>
+                        <p>Google AI Studio is a platform that enables developers to easily integrate Google's advanced AI models into their applications. It provides access to a variety of models for different tasks including text generation, code completion, and more.</p>
+                        
+                        <h4>Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Multiple AI model access</li>
+                            <li><i class="fas fa-check"></i> Text generation and analysis</li>
+                            <li><i class="fas fa-check"></i> Code completion and generation</li>
+                            <li><i class="fas fa-check"></i> Translation capabilities</li>
+                            <li><i class="fas fa-check"></i> Content summarization</li>
+                            <li><i class="fas fa-check"></i> Question answering</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="features" class="page">
+        <section class="features-section">
+            <div class="container">
+                <button class="back-button" data-page="home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+                
+                <div class="section-header">
+                    <h2>How It Works</h2>
+                    <p>Our intelligent system matches your prompt with the best AI tools</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-keyboard"></i>
+                        </div>
+                        <h3>Enter Your Prompt</h3>
+                        <p>Describe what you want to create, ask, or generate in simple language.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI Tool Selection</h3>
+                        <p>Our ML algorithm analyzes your prompt and selects the most suitable AI tools.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Get Multiple Results</h3>
+                        <p>Receive outputs from different AI tools optimized for your specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="section-header" style="margin-top: 4rem;">
+                    <h2>Why Use Perfect AI?</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3>Completely Free</h3>
+                        <p>Access Google AI Studio, ChatGPT 4, and DALL-E without any cost.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Save Time</h3>
+                        <p>No need to switch between different platforms and interfaces.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Better Results</h3>
+                        <p>Get multiple perspectives from different AI tools for the same prompt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="pricing" class="page">
+        <section class="pricing-section">
+            <div class="container">
+                <button class="back-button" data-page="home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+                
+                <div class="section-header">
+                    <h2>Simple, Transparent Pricing</h2>
+                    <p>All our AI tools are completely free to use</p>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-card-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <h3>Free Plan</h3>
+                        <p>Access all AI tools without any limitations</p>
+                        <div class="tool-tags">
+                            <span class="tool-tag">ChatGPT 4</span>
+                            <span class="tool-tag">DALL-E</span>
+                            <span class="tool-tag">Google AI</span>
+                        </div>
+                        <div style="margin-top: 1.5rem;">
+                            <h2 style="font-size: 2.5rem; color: var(--primary);">$0</h2>
+                            <p style="color: var(--text-muted);">forever</p>
+                        </div>
+                        <button classs="btn-primary" style="width: 100%; margin-top: 1.5rem;">Get Started Free</button>
+                    </div>
+                </div>
+                
+                <div class="section-header" style="margin-top: 4rem;">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Is it really free?</h3>
+                        <p>Yes! We believe in making AI accessible to everyone. All our tools are completely free to use.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>How do you make money?</h3>
+                        <p>We're currently focused on growth and user acquisition. Future premium features may be introduced, but core functionality will remain free.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3>Are there any usage limits?</h3>
+                        <p>Currently, there are no strict usage limits. We may implement fair use policies if needed to ensure service quality for all users.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="profile" class="page">
+        <section class="tools-section"> <div class="container">
+                <button class="back-button" data-page="home">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+                
+                <div class="section-header">
+                    <h2>My Profile</h2>
+                </div>
+                
+                <div class="profile-info">
+                    <h3 id="profile-name">Loading...</h3>
+                    <p id="profile-email">Loading...</p>
+                </div>
+
+                <div class="section-header" style="margin-top: 2rem;">
+                    <h2>My Prompt History</h2>
+                </div>
+
+                <div id="prompt-history-container">
+                    <div class="empty-state" id="history-empty-state" style="display: none;">
+                        <i class="fas fa-history"></i>
+                        <h3>No history yet</h3>
+                        <p>Your saved prompts will appear here after you use the app.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-robot"></i>
+                        Perfect AI
+                    </div>
+                    <p>The intelligent way to access multiple AI tools with a single prompt.</p>
+                    <div class="social-links">
+                        <i class='fab fa-amazon-pay' style='font-size:36px;color:red'></i>
+                        <a href="/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><button class="auth-link" data-page="features">Features</button></li>
+                        <li><button class="auth-link" data-page="tools">AI Tools</button></li>
+                        <li><button class="auth-link" data-page="pricing">Pricing</button></li>
+                        <li><button class="auth-link">API</button></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><button class="auth-link">About</button></li>
+                        <li><button class="auth-link">Blog</button></li>
+                        <li><button class="auth-link">Careers</button></li>
+                        <li><button class="auth-link">Contact</button></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><button class="auth-link">Documentation</button></li>
+                        <li><button class="auth-link">Help Center</button></li>
+                        <li><button class="auth-link">Community</button></li>
+                        <li><button class="auth-link">Status</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Authentication State Management
+        let currentUser = null; 
+
+        // Page Navigation
+        function showPage(pageId) {
+            console.log('Showing page:', pageId);
+            
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            } else {
+                console.error('Page not found:', pageId);
+                return;
+            }
+            
+            // Update navigation
+            updateNavigation();
+            
+            // Update active nav link
+            if (pageId === 'home') {
+                setActiveNavLink('home');
+            } else if (['chatgpt', 'dalle', 'google-ai'].includes(pageId)) {
+                setActiveNavLink('tools');
+            } else if (['login', 'signup'].includes(pageId)) {
+                // No nav link for auth pages
+            } else {
+                setActiveNavLink(pageId);
+            }
+            
+            // Load profile data when showing profile page
+            if (pageId === 'profile') {
+                loadProfile();
+            }
+
+            // Hide dropdown on any navigation
+            const dropdown = document.getElementById('user-dropdown');
+            if (dropdown) dropdown.style.display = 'none';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // setActiveNavLink
+        function setActiveNavLink(pageId) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // updateNavigation
+        function updateNavigation() {
+            const navbar = document.getElementById('main-navbar');
+            const authButtons = document.getElementById('auth-buttons');
+            const userMenu = document.getElementById('user-menu');
+            const userAvatar = document.getElementById('user-avatar');
+
+            if (currentUser) {
+                navbar.style.display = 'block';
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'flex';
+                userAvatar.textContent = currentUser.name.charAt(0).toUpperCase();
+            } else {
+                navbar.style.display = 'block';
+                authButtons.style.display = 'flex';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        // DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, setting up navigation...');
+            
+            // Page navigation
+            document.body.addEventListener('click', (e) => {
+                const pageButton = e.target.closest('[data-page]');
+                if (pageButton) {
+                    e.preventDefault();
+                    const pageId = pageButton.getAttribute('data-page');
+                    console.log('Navigation clicked:', pageId);
+                    showPage(pageId);
+                    
+                    if (hamburger && navMenu) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
+            });
+
+            // Form submissions
+            document.getElementById('login-form').addEventListener('submit', handleLogin);
+            document.getElementById('signup-form').addEventListener('submit', handleSignup);
+
+            // Dropdown and Logout Listeners
+            const userAvatarBtn = document.getElementById('user-avatar');
+            const userDropdown = document.getElementById('user-dropdown');
+            const logoutBtn = document.getElementById('logout-btn');
+
+            if (userAvatarBtn) {
+                userAvatarBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+                });
+            }
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', handleLogout);
+            }
+
+            // Hide dropdown if clicking outside
+            document.addEventListener('click', (e) => {
+                const userMenu = document.getElementById('user-menu'); 
+                if (userDropdown && userDropdown.style.display === 'block') {
+                    if (userMenu && !userMenu.contains(e.target)) {
+                        userDropdown.style.display = 'none';
+                    }
+                }
+            });
+
+            // Initialize
+            showPage('login');
+            updateNavigation();
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // handleLogin
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            clearErrors();
+            if (!validateEmail(email)) {
+                showError('login-email-error', 'Please enter a valid email address');
+                return;
+            }
+            if (password.length < 6) {
+                showError('login-password-error', 'Password must be at least 6 characters');
+                return;
+            }
+            
+            fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => { throw new Error(data.message); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Login successful:', data);
+                currentUser = data.user; 
+                showPage('home');
+                updateNavigation();
+                document.getElementById('login-form').reset();
+            })
+            .catch(error => {
+                console.error('Login failed:', error);
+                showError('login-password-error', error.message || 'Login failed. Please try again.');
+            });
+        }
+
+        // handleSignup
+        function handleSignup(e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm').value;
+            clearErrors();
+            if (name.trim().length < 2) {
+                showError('signup-name-error', 'Please enter your full name');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('signup-email-error', 'Please enter a valid email address');
+                return;
+            }
+            if (password.length < 6) {
+                showError('signup-password-error', 'Password must be at least 6 characters');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showError('signup-confirm-error', 'Passwords do not match');
+                return;
+            }
+            
+            fetch('/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(data => { throw new Error(data.message); });
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Signup successful:', data);
+                currentUser = data.user; 
+                showPage('home');
+                updateNavigation();
+                document.getElementById('signup-form').reset();
+            })
+            .catch(error => {
+                console.error('Signup failed:', error);
+                showError('signup-email-error', error.message || 'Signup failed. Please try again.');
+            });
+        }
+
+        // Handle Logout
+        function handleLogout() {
+            currentUser = null;
+            showPage('login');
+            console.log('User logged out.');
+        }
+
+        // Load Profile Page Data
+        function loadProfile() {
+            if (!currentUser) {
+                showPage('login'); 
+                return;
+            }
+
+            // 1. Populate user info
+            document.getElementById('profile-name').textContent = currentUser.name;
+            document.getElementById('profile-email').textContent = currentUser.email;
+
+            // 2. Fetch and populate prompt history
+            const historyContainer = document.getElementById('prompt-history-container');
+            const emptyState = document.getElementById('history-empty-state');
+            historyContainer.innerHTML = ''; // Clear old results
+            emptyState.style.display = 'none';
+
+            fetch(`/api/prompts/${currentUser._id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Could not fetch history');
+                    }
+                    return response.json();
+                })
+                .then(prompts => {
+                    if (prompts.length === 0) {
+                        historyContainer.appendChild(emptyState);
+                        emptyState.style.display = 'block';
+                    } else {
+                        prompts.forEach(prompt => {
+                            const card = document.createElement('div');
+                            card.className = 'prompt-history-card';
+                            
+                            const text = document.createElement('p');
+                            text.textContent = prompt.text;
+
+                            const date = document.createElement('span');
+                            date.textContent = new Date(prompt.timestamp).toLocaleString();
+
+                            card.appendChild(text);
+                            card.appendChild(date);
+                            historyContainer.appendChild(card);
+                        });
+                    }
+                })
+                .catch(err => {
+                    console.error('Error loading profile history:', err);
+                    historyContainer.innerHTML = '<p style="color: #ef4444;">Error loading history.</p>';
+                });
+        }
+
+        // Helper functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+        }
+
+        // DOM Elements for Home Page
+        const generateBtn = document.getElementById('generate-btn');
+        const promptInput = document.querySelector('.prompt-input');
+        const loader = document.getElementById('loader');
+        const resultsContainer = document.getElementById('results-container');
+        const resultsContent = document.getElementById('results-content');
+        const emptyState = document.getElementById('empty-state');
+        const promptDisplay = document.getElementById('prompt-display');
+        const exampleChips = document.querySelectorAll('.example-chip');
+        exampleChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                promptInput.value = chip.textContent;
+            });
+        });
+
+        // AI Tools data
+        const aiTools = [
+            {
+                name: "ChatGPT 4",
+                category: "Text Generation",
+                icon: "fas fa-comment",
+                confidence: 92,
+                description: "Advanced conversational AI for text generation and analysis"
+            },
+            {
+                name: "DALL-E",
+                category: "Image Generation",
+                icon: "fas fa-paint-brush",
+                confidence: 88,
+                description: "Create realistic images and art from text descriptions"
+            },
+            {
+                name: "Google AI Studio",
+                category: "Multi-purpose AI",
+                icon: "fab fa-google",
+                confidence: 85,
+                description: "Google's powerful AI platform for various creative tasks"
+            }
+        ];
+
+        // Function to Save Prompt to History
+        function savePrompt(promptText) {
+            if (!currentUser || !currentUser._id) {
+                console.error('Cannot save prompt: No user logged in.');
+                return;
+            }
+            
+            fetch('/api/prompts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text: promptText,
+                    userId: currentUser._id // We pass the logged-in user's ID
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.message === 'Prompt saved successfully!') {
+                    console.log('History saved:', data.prompt);
+                } else {
+                    console.error('Failed to save history:', data.message);
+                }
+            })
+            .catch(err => {
+                console.error('Error in savePrompt fetch:', err);
+            });
+        }
+
+
+        // generateResults
+        if (generateBtn) {
+            generateBtn.addEventListener('click', generateResults);
+        }
+        if (promptInput) {
+            promptInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') generateResults();
+            });
+        }
+
+        function generateResults() {
+            if (!currentUser) {
+                showPage('login');
+                return;
+            }
+            const prompt = promptInput.value.trim();
+            if (!prompt) return;
+
+            // Call our new function to save the prompt
+            savePrompt(prompt); 
+
+            // (Rest of the function is unchanged)
+            loader.style.display = 'block';
+            resultsContainer.style.display = 'none';
+            emptyState.style.display = 'none';
+            promptDisplay.textContent = prompt;
+            setTimeout(() => {
+                loader.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                resultsContent.innerHTML = '';
+                
+                let selectedTools = [];
+                 if (prompt.toLowerCase().includes('blog') || prompt.toLowerCase().includes('article') || 
+                    prompt.toLowerCase().includes('write') || prompt.toLowerCase().includes('content')) {
+                    selectedTools = [aiTools[0], aiTools[2]]; // ChatGPT and Google AI
+                } else if (prompt.toLowerCase().includes('image') || prompt.toLowerCase().includes('design') || 
+                            prompt.toLowerCase().includes('logo') || prompt.toLowerCase().includes('draw')) {
+                    selectedTools = [aiTools[1]]; // DALL-E
+                } else if (prompt.toLowerCase().includes('code') || prompt.toLowerCase().includes('program') || 
+                            prompt.toLowerCase().includes('algorithm') || prompt.toLowerCase().includes('function')) {
+                    selectedTools = [aiTools[0], aiTools[2]]; // ChatGPT and Google AI
+                } else if (prompt.toLowerCase().includes('slogan') || prompt.toLowerCase().includes('marketing') || 
+                            prompt.toLowerCase().includes('advert')) {
+                    selectedTools = [aiTools[0], aiTools[2]]; // ChatGPT and Google AI
+                } else {
+                    selectedTools = [...aiTools];
+                }
+
+                // Generate result cards
+                selectedTools.forEach(tool => {
+                    const resultCard = document.createElement('div');
+                    resultCard.className = 'result-card';
+                    
+                    let output = "";
+                    if (prompt.toLowerCase().includes('blog')) {
+                        output = "Sustainable energy is no longer a luxury but a necessity in our modern world. As climate change continues to impact our planet, the transition to renewable energy sources has become imperative. Solar, wind, and hydroelectric power offer viable alternatives to fossil fuels, reducing carbon emissions and promoting environmental sustainability.";
+                    } else if (prompt.toLowerCase().includes('slogan')) {
+                        output = "Brewed to Perfection, Crafted for Connection - Your Daily Dose of Inspiration in Every Cup";
+                    } else if (prompt.toLowerCase().includes('code')) {
+                        output = "def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)";
+                    } else if (prompt.toLowerCase().includes('logo')) {
+                        output = "A modern, minimalist logo featuring a stylized coffee cup with rising steam that transforms into a connection symbol. The design uses a warm color palette with earthy tones to evoke comfort and community.";
+                    } else {
+                        output = `Based on your prompt "${prompt}", this AI tool can help you generate relevant content. The specific output would vary based on the tool's capabilities and your detailed requirements.`;
+                    }
+                    
+                    resultCard.innerHTML = `
+                        <div class="result-header">
+                            <div class="tool-info">
+                                <div class="tool-icon">
+                                    <i class="${tool.icon}"></i>
+                                </div>
+                                <div>
+                                    <div class="tool-name">${tool.name}</div>
+                                    <div class="tool-category">${tool.category}</div>
+                                </div>
+                            </div>
+                            <div class="confidence-score">${tool.confidence}% Match</div>
+                        </div>
+                        <p>${tool.description}</p>
+                        <div class="result-output">${output}</div>
+                        <div class="result-actions">
+                            <button class="action-btn">
+                                <i class="far fa-copy"></i>
+                                Copy
+                            </button>
+                            <button class="action-btn">
+                                <i class="far fa-thumbs-up"></i>
+                                Like
+                            </button>
+                            <button class="action-btn" data-page="${tool.name.toLowerCase().replace(' ', '-')}">
+                                <i class="fas fa-external-link-alt"></i>
+                                Open Tool
+                            </button>
+                        </div>
+                    `;
+                    
+                    resultsContent.appendChild(resultCard);
+                });
+                
+                document.querySelector('.results-section').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        // Window load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (resultsContainer) resultsContainer.style.display = 'none';
+            if (loader) loader.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'block';
+        });
+
+        // Tool-specific functionality
+        // ChatGPT
+        if (document.getElementById('chatgpt-send')) {
+            document.getElementById('chatgpt-send').addEventListener('click', () => {
+                if (!currentUser) {
+                    showPage('login');
+                    return;
+                }
+                const input = document.querySelector('#chatgpt .prompt-input').value;
+                if (input.trim()) {
+                    savePrompt(input); // Also save prompts from inside tools
+                    const resultsDiv = document.getElementById('chatgpt-results');
+                    const newMessage = document.createElement('div');
+                    newMessage.className = 'result-card';
+                    newMessage.innerHTML = `
+                        <div class="result-header">
+                            <div class="tool-info">
+                                <div class="tool-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <div class="tool-name">ChatGPT 4</div>
+                                    <div class="tool-category">AI Assistant</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>${input}</p>
+                        <div class="result-output">I understand you said: "${input}". As an AI, I can help you with a wide variety of tasks. Could you provide more details about what you'd like me to do with this information?</div>
+                    `;
+                    resultsDiv.appendChild(newMessage);
+                    document.querySelector('#chatgpt .prompt-input').value = '';
+                }
+            });
+        }
+
+        // DALL-E
+        if (document.getElementById('dalle-generate')) {
+            document.getElementById('dalle-generate').addEventListener('click', () => {
+                if (!currentUser) {
+                    showPage('login');
+                    return;
+                }
+                const input = document.querySelector('#dalle .prompt-input').value;
+                if (input.trim()) {
+                    savePrompt(input); // Also save prompts from inside tools
+                    const resultsDiv = document.getElementById('dalle-results');
+                    const newResult = document.createElement('div');
+                    newResult.className = 'result-card';
+                    newResult.innerHTML = `
+                        <div class="result-header">
+                            <div class="tool-info">
+                                <div class="tool-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div>
+                                    <div class="tool-name">DALL-E</div>
+                                    <div class="tool-category">Image Generator</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>${input}</p>
+                        <div class="result-output" style="text-align: center; padding: 2rem;">
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 200px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 1rem;">
+                                <i class="fas fa-image" style="font-size: 3rem;"></i>
+                            </div>
+                            <p>Generated image based on: "${input}"</p>
+                        </div>
+                    `;
+                    resultsDiv.appendChild(newResult);
+                    document.querySelector('#dalle .prompt-input').value = '';
+                }
+            });
+        }
+
+        // Google AI
+        if (document.getElementById('google-ai-send')) {
+            document.getElementById('google-ai-send').addEventListener('click', () => {
+                if (!currentUser) {
+                    showPage('login');
+                    return;
+                }
+                const input = document.querySelector('#google-ai .prompt-input').value;
+                if (input.trim()) {
+                    savePrompt(input); // Also save prompts from inside tools
+                    const resultsDiv = document.getElementById('google-ai-results');
+                    const newResult = document.createElement('div');
+                    newResult.className = 'result-card';
+                    newResult.innerHTML = `
+                        <div class="result-header">
+                            <div class="tool-info">
+                                <div class="tool-icon">
+                                    <i class="fab fa-google"></i>
+                                </div>
+                                <div>
+                                    <div class="tool-name">Google AI Studio</div>
+                                    <div class="tool-category">Multi-purpose AI</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>${input}</p>
+                        <div class="result-output">Based on your prompt "${input}", Google AI Studio can generate various types of content. For more specific results, please provide additional details about what you're looking to create.</div>
+                    `;
+                    resultsDiv.appendChild(newResult);
+                    document.querySelector('#google-ai .prompt-input').value = '';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
